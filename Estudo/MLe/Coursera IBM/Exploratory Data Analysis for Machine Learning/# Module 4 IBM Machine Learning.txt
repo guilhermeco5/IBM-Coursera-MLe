@@ -1,0 +1,321 @@
+# Module 4 IBM Machine Learning {
+
+    • Inferential Statistics and Hypothesis Testing
+        
+        - Introduction
+            Estimation: 
+                is the application of an algorithm, for example taking an everage
+            Inference: 
+                involves putting an accuracy on the estimate (e.g. standard error of an everage)
+
+        - Machine Learning and statistical inference are similar
+            (a case of computer science borrowing from a long history in statistics)
+
+            in both cases, we're using data to learn/infer qualities of a distribution that
+            generated the data (often termed the data-generating process)
+
+            we may care either about the whole distribution or just features (e.g. mean)
+
+            Machine Learning applications that focus on understanding parameters and individuals
+            effects involve more tools from statistical inference (some applications are focused
+            only on results)
+
+        - Example: Customer Churn
+            Customer churn occours when a costumer leaves a company
+
+            data related to churn may include a target variable for wheter or not the costumer
+            left
+
+            features could include:
+                - the length of time as a customer
+                - the type and amount purchased
+                - other customer characteristics
+
+            churn prediction is often approached by predicting a score for individuals that
+            estimates the probability the customer will leave
+
+            Customer Churn: Estimation
+                Estimation of factors diving customer churn involves measuring the impact of
+                each factor in predicting churn
+
+                Inference involves determing whether these measured impacts are statistically
+                significant
+
+                Example Dataset
+                    IBM Cognos Customer Churn Dataset
+
+                    |# Seaborn hexbin plot
+                    | sns.jointplot(x=df[labels['months']],
+                    |               y=df[labels['monthly']],
+                    |               kind='hex')
+
+    • Parametric vs Non-Parametric
+        If inference is about trying to find out the Data-Generating Process (DPG), then
+        we can say that a statistical model (of the data is set of possible distributions)
+        or mayber even regressions.
+
+        A Parametric model is a particular type of statistical model: its also a set of
+        distributions or regressions, but they have a finite number of parameters
+
+        - Non-Parametric Statistics
+            In non-parametric statistics, we make fewer assumptions.
+
+            In particular, we dont assume that the data belong to any particular distribution
+            (also called distribution-free inference)
+            
+            This doesnt mean that we know nothing, though!
+
+        - Non-Parametric Inference
+            An example of non-parametric inference is creating a distribution of the data
+            (CDF or cumulative distribution function) using a histogram
+
+            in this case, we are not specifying parameters
+
+        - Parametric Models
+            A parametrical models is a particular type of statistical model:
+            its also a set of distributions or regressions, but they have a finite number
+            of parameters
+
+            An example of a parametric model: The normal Distribution
+
+            Example: Customer Lifetime Value
+                Customer lifetime value is an estimate of the customer's value to the company
+
+                Data related to customer lifetime value might include:
+                    - The expected length of time as a customer
+                    - The expected amount spent over time
+
+                To estimate lifetime value, we make assumptions about the data
+
+                These assumptions can be parametric (assuming a specific distribution), or
+                non-parametric
+
+            Parametric Models: maximum likelihood
+                The most common way of estimating in a parametric model is through maximum
+                likelihood estimation (MLE)
+
+                The likelihood function is related to probability and is a function of the
+                parameters
+
+        • Commonly Used Distributions
+            - Uniform
+            - Gaussian/Normal (Central limit theorem)
+            - Log Normal
+            - Exponential
+            - Poisson
+
+        • Frequentist vs Bayesian Statistics
+            A Frequentist is concerned with repeated observations in the limit
+
+            Processes may have true frequencies, but we are interested in modeling
+            probabilities as many, many repeats of an experiment
+
+            Frequentist approach:
+                1- Derive the probabilistic property of a procedure
+                2- Apply the probability directly to the observed data
+
+            - Bayesian
+                A Bayesian describes parameters by probability distributions
+
+                Before seeing any data, a prior distribution (based on the experimenters'
+                belief) is formulated
+
+                This prior distribution is then updated after seeing data (a sample from the
+                distribution)
+
+                after updating, the distribution is called the posterior distribution
+
+            We use much of the same math and the same formulas in both Frequentist
+            and Bayesian statistics
+
+            The element that differs is the interpretation
+
+            We will point out the difference in interpretation, where appropriate 
+
+    • Hypothesis Testing
+
+        - Introduction
+            A hypothesis is a statement about a population parameter
+                We create two hypotheses:
+                    The null hypothesis (H0)
+                    The alternative hypothesis (H1 or HA)
+            We decide which one call the null depending on how the problem is set up
+
+        - Decision Rules
+            A hypothesis testing procedure gives us a rule to decide:
+                - For which values of the test statistic do we accept H0
+                - For which values of the test statistic do we reject H0 and accept H1
+
+            You may hear some people say that you can reject H0 but that you never accept H1
+
+            Here, this doesnt matter very much, since we are using hypothesis testing in order
+            to decide which of two paths to take in the project
+
+        - Bayesian Approach
+            In the Bayesian interpretation (example to follow), we dont get a decision
+            boundary. Instead, we get updated (posterior) probabilities
+
+            In the Bayesian interpretation, we need priors for each hypothesis:
+                - In this case, we randomly chose the coin flip
+                - P(H¹=we chose coin 1)= 1/2 and
+                - P(h²=we chose coin 2)= 1/2
+
+            Since we have no way, before seeing the data, to determine the coin that was
+            chosen, we just assign 1/2 to each
+
+            Priors: P(H¹)=1/2=P(H²)=1/2
+
+            Updating priors after seeing the data 3 heads (Bayes Rule):
+                P(h¹|x)= P(x|H1)*P(H¹)/P(x)
+
+            We can write out the ratio:
+                P(H¹|x)/P(H²|x)= P(H1)*P(x|H1)/P(H2)*P(x|H2)
+
+            The priors are multiplied by the likelihood ratio, which does not depend on the
+            priors
+
+            The likelihood ratio tells us how we should update the priors in reaction to
+            seeing a given set of data!
+
+        - Neyman-Pearson Interpretation
+            The Neyman-Pearson paradigm (1933) is non-Bayesian
+            This gives an up or down vote on H0 vs H1
+
+            - Example: Customer Churn
+                Customer Churn occurs when a costumer leaves a company
+
+                Data related to churn may include a target variable for whether or not the 
+                customer left
+
+                Features could include:
+                    - The length of time as a customer
+                    - The type and amount purchased
+                    - Other customer characteristics
+
+                Churn prediction is often approached by predicting a score for individuals
+                that estimates the probability the customer will leave
+
+                - Type I vs Type II Error
+                    Suppose we use data on customer characteristics to predict who will churn
+                    over the next year
+
+                    In our data, customers who have been with the company for longer are less
+                    likely to churn
+
+                    This could be due to an underlying effect, or due to chance:
+
+                        - A type I error occurs when this effect is due to chance, but we find
+                          it to be significant in the model
+
+                        - A type II error occurs when we ascribe the effect to chance, but the
+                          effect is non-coincidental
+
+        - Terminology
+            The likelihood ratio is called a test statistic: we use it to decide whether
+            to accept/reject H0
+            
+                The rejection region: 
+                    is the set o values of the test statistic that lead
+                    rejection of H0
+
+                The acceptance region: 
+                    is the set of values of the test statistic that lead
+                    to acceptance of H0
+
+                The null distribution: 
+                    is test statistic's distribution when the null is true
+
+        - Marketing Intervention
+            Testing marketing intervention effectiveness:
+
+                - For a new direct mail marketing compaign to existing customers, the null
+                  hypothesis (H0), suggests the compaign does not impact purchasing
+
+                - The alternative hypothesis (H1), suggests it has an impact
+
+        - Website Layout
+            Testing a change in website Layout
+
+                - For a proposed change to a web site layout, we may test a null hypothesis
+                  (H0) that the change has no impact on traffic
+
+                - Here, we would look for evidence to reject the null in favor of an
+                  alternative hypothesis (H1, that there is an impact on traffic)
+
+        - Product Quality
+            Testing whether a product size threshold:
+                
+                - Suppose a product is produced in various factories, with expected size S
+                - To confirm that the product size meets the standard within a margin of 
+                  error, the company might:
+
+                    + Randomly sample from each production source,
+                    + Estabilish H0 (product suze is not significantly different from S),
+                    + And H1 (there is a significant deviation in product size),
+                    + Test whether H0 can be rejected in favor of H1, based on the observed
+                      mean and standard deviation
+
+        - significance level and p-values
+
+            Significance level (alpha) is chosen before testing to decide when to reject the 
+            null hypothesis, balancing the risk of type 1 and type 2 errors.
+        
+            Lower alpha values mean stricter criteria for rejecting the null, important in 
+            high-stakes scenarios like medical testing.
+
+            We know the distribution of the null hypothesis
+            
+            To get a rejection region, we calculate the test statistic
+            
+            we will choose, before testing the data, the level at which we will reject the
+            null hypothesis
+        
+                Important Terminology:
+                    The p-value:
+                        smallest significance level at which the null hypothesis would be 
+                        rejected
+
+                    The confidence interval:
+                        the values of the statistic for which we accept the null
+
+            Example: Coin Tossing
+                Suppose we saw three heads in 10 rolls:
+
+                    - P(3 or less heads)=P(0 heads) + P(1 head) + P(2 heads) + P(3 heads) = 17%
+                    - Under the null hypothesis, a value this extreme occurs 17% of the time
+
+                    H0: the coin is fair and P(H)= .5
+                    H1: the coin is unfair and P(H) < .5
+
+                How can we test the null hypothesis if we observe 3 heads in 10 flips?
+
+                Testing the null hypothesis:
+                    - We know H0 is distributed binom(10, .5)
+                    - Choose a p-value cutoff (more on p-values soon), say 5%
+                    - calculate the CDF of 3 heads from a binom(10, .5)
+                    - CDF= 17.1 (above our cutoff)
+                    - This is > 5%, so we dont reject H0
+        
+        - F-Statistic
+            H0: the dta can be modeled by setting all betas to zero
+
+            Reject the null if the p-value is small enough
+
+        - Power and sample size
+            If you do many 5% significance tests looking for a significant result, the
+            chances of making at least on type I error increase
+
+            - Bonferroni Correction
+                The Bonferroni Correction says "choose P so that the probability of making
+                a type I error (assuming no effect) is 5%"
+
+                Allows the probability of a type I error to be controlled, but at the cost
+                of power
+
+                Effects either need to be larger or the tests need larger samples,
+                to be detected
+
+                Best practice is no limit tthe number of comparisons done to a few
+                well-motivated cases
+                
+}

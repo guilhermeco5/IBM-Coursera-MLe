@@ -1,0 +1,69 @@
+# Module 1 IBM Machine Learning {
+
+    • Introduction to Supervised Machine Learning and Linear Regression
+        In this module, you’ll identify the three primary types of machine learning: 
+        Supervised, Unsupervised, and Reinforcement. Explore real-world applications 
+        across various industries and distinguish between prediction and interpretation 
+        tasks. Examine the fundamentals of linear regression, including key assumptions and 
+        use cases. You’ll learn how to measure model error, improve predictive accuracy, 
+        and use practical tools to train and evaluate linear regression models.
+
+        - Machine Learning in our daily lives
+            Spam Filtering
+            Web Search
+            Postal Mail Routing
+            Fraud Detection
+            Movie Recommendations
+            Vehicle Driver Assistance
+            Web Advertisements
+            Social Networks
+            Speech Recognition
+
+        - Fit Parameters vs Hyperparameters
+            ML Framework (applies to Supervised Machine Learning Models):
+
+                Yp= f(Ω, x)
+
+                Our framework estimates a relationship between the features and target:
+                    - Here, Ω (the Fit Parameters) involve aspects of the model we estimate
+                      (fit) using the data
+
+                    - To implement our approach, we make decisions regarding how to produce
+                      produce these estimates
+
+                    - These decisions lead to Hyperparameters, that are an important part of 
+                    the machine learning workflow (though not explicit components of the 
+                    model)
+
+        - Machine Learning Framework
+            ML Framework (applies to every Supervised Machine Learning Models):
+
+                Yp= f(Ω, x)
+            
+            Two main modeling approaches:
+                - Regression: Y is numeric
+                    E.g.: stock price, box office revenue, location (x,y coordinates).
+                - Classification: Y is categorical
+                    E.g.: face recognition customer churn, which word comes next.
+
+            How does Machine Learning Work?
+                ML Framework (applies to Supervised Machine Learning Models):
+
+                    Yp= f(Ω, x)
+
+                    x: input
+                    Yp: output (values predicted by the model)
+                    f(.): prediction function that generates predictions from x and Ω
+                    j(y,yp): Loss
+
+                    Most ML models define a quantitative score for how good our predictions
+                    are
+
+                    Typically measures how close our predictions are to the true values
+
+                    Update rule: 
+                        using features x and outcome y, choose parameters Ω to
+                        minimize loss j
+
+
+}
