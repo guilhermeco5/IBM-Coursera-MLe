@@ -63,7 +63,31 @@
 
                     Update rule: 
                         using features x and outcome y, choose parameters Ω to
-                        minimize loss j
+                        minimize loss
 
+    • Data Splits and Polynomial Regression
+
+        - Training and Test Splits         
+            Using training and test data
+
+            Training Data -> Fit the model
+            Test Data -> Measure Performance (predict label, compare with actual value, measure error)
+
+        - Fitting Training and Test Data
+
+            Training (X and Y train) -> model(X_train, Y_train ).fit() -> model
+            
+            Test Data (X test) -> model / .predict(X_test) -> Y_predict 
+            |-> Y_test (actuals) -> error metric(Y_test, X_predict) -> test error
+
+        - Train-Test SPlit: The Syntax
+            Import the train and test split function
+                | From sklearn.model_selection import train_test_split
+
+            Split the data and put 30% into the test set
+                | train, test= train_test_split(data, test_size=0.3)
+
+            Other method for splitting data
+                | From sklearn.model_selection import ShuffleSplit
 
 }
