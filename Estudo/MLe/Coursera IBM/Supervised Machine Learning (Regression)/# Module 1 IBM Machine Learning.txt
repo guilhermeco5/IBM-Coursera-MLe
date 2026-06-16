@@ -90,4 +90,50 @@
             Other method for splitting data
                 | From sklearn.model_selection import ShuffleSplit
 
+        - Polynomial Regression
+            |-> Addition of Polynomial Features
+
+            Capture higher order features of data by adding polynomial features
+
+            "Linear regression" means linear combinations of features 
+
+            |-> Can also include variable interactions
+
+            How is the correct functional form chosen?
+                Check relationship of each variable or with outcome
+
+        - Enhancing the Linear Model
+            Adjusting the standard linear approach to regression by adding polynomial 
+            features is one of many approaches to dealing with the fundamentals problems:
+
+            prediction
+            interpretation
+
+            As we move into model evaluation, keep in mind that the same tools are useful for
+            evaluating a wide variety of regression and classification problems.
+
+        - Extending the Linear Model
+            In addition to Polynomial features, we will also examine several additional variants
+            of standard model, using many for both regression and classification.
+
+            Some examples include:
+                Logistic Regression
+                K-Nearest Neighbors
+                Decision Trees
+                Support Vector Machines
+                Random Forests
+                Ensemble Methods
+                Deep Learning approaches
+
+        - Polynomial Features: The Syntax
+            Import the class containing the transformation method
+                | from sklearn.preprocessing import PolynomialFeatures
+
+            Create an instance of the class
+                | polyFeat = PolynomialFeatures(degree=2)
+
+            Create the polynomial features and then transform the data
+                | polyFeat = polyFeat.fit(X_data)
+                | X_poly = polyFeat.transform(X_data)
+
 }
