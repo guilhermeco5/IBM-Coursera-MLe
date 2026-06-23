@@ -1,0 +1,106 @@
+# Module 3 IBM Machine Learning {
+
+    • Bias Variance Trade off and Regularization Techniques: Ridge, LASSO, and Elastic Net
+
+        - Bias Variance Trade off
+            Choosing the level of complexity
+
+                Polynomial Degree = 1
+                |-> Poor at both training and predicting, too simple
+
+                Polynomial Degree = 4
+                |-> Just right for both training and predicting
+
+                Polynomial Degree = 15
+                |-> Good at training and poor at predicting
+
+            Bias and Variance: Intuition
+
+                Bias: is a tendency to miss
+
+                Variance: is tendency to be inconsistent
+
+                ideally, we want the outcome that highly consistent predictions that are close to perfect on average
+                (Low variance and low Bias)
+
+                tendency: expectation of out-of-sample behavior over many training set samples
+
+            3 Sources od model error
+                Bias -> being wrong
+
+                    Tendency of predictions to miss true values
+                    - Worsened by missing information, overly-simplistic assumptions
+                    - Miss real pattern (underfit)
+
+                Variance -> being unstable
+
+                    Tendency of predictions to fluctuate
+                    - Characterized by sensitivity or output to small changes in input data
+                    - Often due to overly complex or poorly-fit model
+
+                Irreducible Error -> unavoidable randomness
+
+                    Tendency to intrinsic uncertainty/randomness
+                    - Present in even the best possible model
+
+            Bias and Variance Tradeoff, visualized
+                Summary of bias-variance Tradeoff:
+
+                - Model adjustments that that decrease bias often increase variance, and vice versa
+                - The bias-variance tradeoff is analogous to a complexity tradeoff
+                - Finding the best model means choosing the right level of complexity
+                - Want a model elaborate enough to not underfit, but not so exceedingly elaborate that it overfits
+
+            Bias and Variance: Discussion
+                - The higher the degree of a polynomial regression the more complex the model (lower bias, higher variance)
+                - At lower degrees, we can see visual signs of bias: predictions are too rigid to capture the curve pattern in the data
+                - At higher degrees, we see visual signs of variance: predictions fluctuate wildly because of the model's sensitivity
+                - The goal is to find the right degree, such that the model has sufficient complexity to describe the data without overfitting
+
+            Bias and Variance: Example
+
+            Polynomial degree = 1
+            |-> High Bias and Low Variance
+
+            Polynomial degree = 4
+            |-> Just Right
+
+            Polynomial degree = 15
+            |-> Low Bias, High Variance
+
+        - Regularization and model selection
+
+            Tunning the model
+                Can we tune with more granularity than choosing polynomial degrees?
+                    Yes, by using regularization
+
+            What does Regularization Accomplish?
+                
+                M(W) + ʎR(W)
+
+                M(w) : model error
+                R(W) : function of estimated parameter(s)
+                ʎ : regularization strength parameter
+                
+                |-> Regularization adds an (adjustable) regularization strength parameter directly into the cost function
+
+                        The regularization strength parameter ʎ (lambda) allows us to manage the complexity tradeoff:
+                            - More regularization introduces a simpler model or more bias
+                            - Less regularization makes the model more complex and increases variance
+                        if our model is overfit (variance too high), regularization can improve the generalization error and reduce variance
+
+                |-> This lambda adds a penalty proportional to the size of the estimated model parameter, or a function of the parameter
+                |-> Increasing the cost function controls the amount of the penalty
+
+        - Regularization and Feature Selection
+            |-> Regularization performs feature selection by shrinking the contribution of features
+            |-> For L1-regularization, this is accomplished by driving some coefficients to zero
+            |-> Feature selection can also be performed by removing features
+
+        - Why is feature selection important?
+            |-> Reducing the number of features can prevent overfitting
+            |-> For some models, fewer features can improve fitting time and/or results
+            |-> Identifying most critical features can improve model interpretability
+
+
+}
