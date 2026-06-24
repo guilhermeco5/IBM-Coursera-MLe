@@ -1,4 +1,4 @@
-# Module 3 IBM Machine Learning {
+# Module 4 IBM Machine Learning {
 
     • Bias Variance Trade off and Regularization Techniques: Ridge, LASSO, and Elastic Net
 
@@ -102,5 +102,45 @@
             |-> For some models, fewer features can improve fitting time and/or results
             |-> Identifying most critical features can improve model interpretability
 
+        - Ridge regression
+            A regularization technique in linear regression to prevent overfitting by penalizing large coefficients
 
+            |-> Ridge Regression Cost Function and Penalty
+
+                |-> Ridge regression modifies the original linear regression cost function by adding a penalty term proportional to the square of the coefficients 
+                    multiplied by a regularization parameter lambda.
+                |-> This penalty discourages large coefficient values, balancing the goal of minimizing prediction error with controlling model complexity
+
+        - Importance of Feature Scaling
+            
+            |-> Because the penalty depends on coefficient magnitude, features must be standardized (mean zero, unit variance) to ensure fair penalization across variables with different scales.
+            |-> Without scaling, variables with larger scales could dominate the penalty and distort the model.
+
+        - Effect of Lambda on Model Complexity
+
+            |-> Increasing lambda increases the penalty on coefficients, shrinking them towards zero but not exactly zero, which reduces model variance but introduces bias.
+            |-> Cross-validation is used to select the optimal lambda that balances bias and variance for best predictive performance.
+            |-> Graphs illustrate how higher lambda values lead to smaller coefficients and simpler models, while lambda = 0 corresponds to no regularization and potentially overfitting.
+
+        - Resume of ridge regression
+            Overall, ridge regression helps control model complexity by penalizing large coefficients, requiring feature scaling, and tuning lambda to achieve a good bias-variance trade-off.
+            The next lecture will cover another regularization method called lasso regression
+
+        - LASSO regression
+            A regularization technique for linear regression, comparing it with Ridge regression and introducing Elastic Net as a hybrid approach
+
+            |-> LASSO uses the absolute value (L1 norm) of coefficients for penalization, unlike Ridge which uses the squared coefficients (L2 norm)
+            |-> It tends to shrink some coefficients to zero, effectively performing feature selection and reducing model complexity
+
+        - Comparison with Ridge Regression
+
+            |-> LASSO is less influenced by outliers due to the absolute value penalty and can eliminate less important features.
+            |-> Ridge regression shrinks all coefficients more uniformly and is computationally faster to converge.
+            |-> Choosing between them depends on goals like prediction accuracy, interpretability, and computational efficiency.
+
+        - Elastic Net Regularization
+
+            |-> Elastic Net combines LASSO and Ridge penalties, controlled by parameters lambda and alpha.
+            |-> It balances the benefits of both methods, allowing tuning between feature selection and coefficient shrinkage.
+            |-> Optimal hyperparameters are found via cross-validation to avoid underfitting or overfitting.
 }
